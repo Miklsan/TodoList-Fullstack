@@ -8,13 +8,13 @@ const LoginForm = (props) => {
   const handleFormSubmit = (e) => {
     e.preventDefault()
     const username = e.target.elements.username.value
-    const password = e.target.elements.password.value
-    fetch("http://192.168.1.70:7777/login", {
+    
+    fetch("http://192.168.1.52:7777/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username }),
     })
       .then((response) => {
         console.log(response)
@@ -43,18 +43,7 @@ const LoginForm = (props) => {
           required
         />
       </div>
-      <div className="input-group mb-2">
-        <label className="input-group-text" htmlFor="password">
-          password
-        </label>
-        <input
-          type="password"
-          className="form-control"
-          id="password"
-          name="password"
-          required
-        />
-      </div>
+     
       <button
         name="button"
         value="buttonId"

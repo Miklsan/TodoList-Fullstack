@@ -15,19 +15,24 @@ function App() {
   return (
     <ModeContextProvider>
       <AppContainer>
-
         <div className="container my-4">
           <h1 className="text-center">ToDo List</h1>
           <span>{date}</span>
           <ModeSwitch />
-          <Todos />
         </div>
         <div>
         <h2 className="text-center mb-3">Login</h2>
-        <LoginForm />
+        {!loggedIn && (
+        <LoginForm setLoggedIn={setLoggedIn} setUsername={setUsername} />
+      )}
+      {loggedIn && (
+        <>
+          <Todos username={username} />
         <button type="button" className="btn btn-danger">
           Log out
         </button>
+        </>
+      )}
         </div>
       </AppContainer>
     </ModeContextProvider>
